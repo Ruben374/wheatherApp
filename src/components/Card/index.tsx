@@ -1,15 +1,29 @@
 import { Box, Image, Text } from "native-base"
+import { TouchableOpacity, StyleSheet } from "react-native"
 
-export default function Card() {
+function Card(props: any) {
     return (
-        <Box display="flex" p={5} alignItems="center" backgroundColor="#97ABFF" ml={5}>
-            <Text fontSize={18} color="#ffff">
-                Now
+        <TouchableOpacity style={Styles.Container}>
+            <Text fontSize={16} color="#ffff">
+                {new Date(props.day * 1000).toLocaleDateString()}
             </Text>
             <Image source={require("./test.png")} width="40px" height="40px" />
-            <Text fontSize={18} color="#ffff">
-                13ª
+            <Text fontSize={16} color="#ffff">
+                {props.temp}º
             </Text>
-        </Box>
+        </TouchableOpacity>
     )
 }
+
+const Styles = StyleSheet.create({
+    Container: {
+        display: "flex",
+        alignItems: "center",
+        backgroundColor: "#97ABFF",
+        marginLeft: 5,
+        padding: 5,
+        borderRadius: 20
+    },
+});
+
+export default Card
